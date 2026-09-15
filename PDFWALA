@@ -1,1 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PDFWALA - simple PDF tools for ₹2 per job with UPI payment.">
+  <title>PDFWALA — PDF tools for ₹2</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="PDFWALA home"><span class="brand-mark">P</span><span>PDFWALA</span></a>
+    <nav>
+      <a href="#tools">All Tools</a>
+      <a href="#how">How it works</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <button class="price-pill" id="pricePill">₹2 / job</button>
+  </header>
 
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">INDIA'S SIMPLE PDF WORKBENCH</div>
+        <h1>All your PDF work.<br><span>Just ₹2 per job.</span></h1>
+        <p>Merge, split, compress, convert, organize and edit documents in a clean, fast workspace.</p>
+        <div class="hero-actions">
+          <a class="primary-btn" href="#tools">Explore PDF tools <span>→</span></a>
+          <button class="secondary-btn" id="payTopBtn">Pay ₹2 with UPI</button>
+        </div>
+        <div class="trust-row"><span>✓ No subscription</span><span>✓ One job = ₹2</span><span>✓ UPI ready</span></div>
+      </div>
+      <div class="hero-card">
+        <div class="mini-window">
+          <div class="window-head"><span></span><span></span><span></span><b>PDFWALA</b></div>
+          <div class="drop-zone" id="heroDrop">
+            <div class="upload-icon">↑</div>
+            <h3>Drop your files here</h3>
+            <p>or choose a PDF / image from your device</p>
+            <label class="file-btn">Choose files<input id="heroFile" type="file" multiple accept=".pdf,image/*"></label>
+          </div>
+          <div class="job-price"><span>Processing fee</span><strong>₹2</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="notice">
+      <strong>₹2 flat pricing</strong>
+      <span>Every completed tool job costs only ₹2. Pay by UPI before processing.</span>
+      <button id="payNoticeBtn">Pay now</button>
+    </section>
+
+    <section id="tools" class="tools-section">
+      <div class="section-heading">
+        <div><div class="eyebrow">PDFWALA TOOLBOX</div><h2>Choose a tool</h2></div>
+        <div class="search-wrap"><input id="toolSearch" placeholder="Search tools…"><span>⌕</span></div>
+      </div>
+
+      <div class="category-tabs" id="categoryTabs">
+        <button class="active" data-cat="all">All</button>
+        <button data-cat="organize">Organize</button>
+        <button data-cat="convert">Convert</button>
+        <button data-cat="edit">Edit</button>
+        <button data-cat="security">Security</button>
+        <button data-cat="intelligence">AI / OCR</button>
+      </div>
+
+      <div class="tool-grid" id="toolGrid">
+        <!-- populated by app.js -->
+      </div>
+    </section>
+
+    <section id="how" class="how">
+      <div class="section-heading"><div><div class="eyebrow">HOW PDFWALA WORKS</div><h2>Three easy steps</h2></div></div>
+      <div class="steps">
+        <article><div class="step-no">01</div><h3>Pick a tool</h3><p>Select the PDF operation you need.</p></article>
+        <article><div class="step-no">02</div><h3>Pay ₹2</h3><p>Scan the UPI QR or use the UPI payment button.</p></article>
+        <article><div class="step-no">03</div><h3>Process & download</h3><p>Upload your files, run the job and download the result.</p></article>
+      </div>
+    </section>
+
+    <section class="security-banner">
+      <div><div class="eyebrow">YOUR FILES</div><h2>Designed for a private workflow</h2><p>For production, connect this frontend to a secure backend and automatically delete temporary files after processing.</p></div>
+      <div class="shield">✓</div>
+    </section>
+
+    <section id="faq" class="faq">
+      <div class="section-heading"><div><div class="eyebrow">QUESTIONS</div><h2>FAQ</h2></div></div>
+      <details><summary>Is the price really ₹2?</summary><p>Yes. This design uses a flat ₹2 price for each completed job.</p></details>
+      <details><summary>Can I verify UPI payment automatically?</summary><p>Not securely with HTML/CSS/JS alone. For real automatic verification, connect a payment gateway or your own server-side UPI verification flow. The included demo opens your UPI app/QR and then lets the user continue.</p></details>
+      <details><summary>Which tools work in this browser-only version?</summary><p>Merge PDF, JPG/image to PDF and PDF page preview/export are implemented with browser libraries. Other cards are prepared as tool entry points and can be connected to server-side converters.</p></details>
+    </section>
+  </main>
+
+  <footer>
+    <div class="brand footer-brand"><span class="brand-mark">P</span><span>PDFWALA</span></div>
+    <p>Simple document tools · ₹2 per job</p>
+    <p class="small">© <span id="year"></span> PDFWALA</p>
+  </footer>
+
+  <div class="modal-backdrop" id="paymentModal" aria-hidden="true">
+    <div class="modal payment-modal">
+      <button class="close" data-close="paymentModal">×</button>
+      <div class="eyebrow">UPI PAYMENT</div>
+      <h2>Pay only ₹2</h2>
+      <p>Scan the QR with any UPI app, or tap the button on your phone.</p>
+      <img src="upi-qr.jpg" class="qr" alt="PDFWALA UPI payment QR">
+      <div class="upi-id"><span>UPI ID</span><b>6291079350@slc</b><button id="copyUpi">Copy</button></div>
+      <a class="upi-btn" href="upi://pay?pa=6291079350@slc&pn=PDFWALA&am=2&cu=INR">Open UPI app — ₹2</a>
+      <button class="paid-btn" id="paidBtn">I have paid ₹2 — continue</button>
+      <p class="fineprint">Demo payment flow: for real production use, verify the transaction server-side before releasing a processed file.</p>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="toolModal" aria-hidden="true">
+    <div class="modal tool-modal">
+      <button class="close" data-close="toolModal">×</button>
+      <div class="eyebrow" id="toolCategory">PDF TOOL</div>
+      <h2 id="toolTitle">Tool</h2>
+      <p id="toolDescription"></p>
+      <div id="toolBody"></div>
+      <div class="tool-actions">
+        <button class="secondary-btn" data-close="toolModal">Cancel</button>
+        <button class="primary-btn" id="runToolBtn">Run job — ₹2</button>
+      </div>
+      <div id="toolStatus" class="status"></div>
+    </div>
+  </div>
+
+  <!-- Browser libraries. For production, pin exact versions and self-host if desired. -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
